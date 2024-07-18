@@ -1,8 +1,9 @@
+// 5-building.js
 class Building {
   constructor(sqft) {
     this._sqft = sqft;
     if (new.target === Building) {
-      throw new Error('Building is an abstract class and cannot be instantiated directly.');
+      throw new Error('Cannot instantiate abstract class Building');
     }
   }
 
@@ -10,12 +11,12 @@ class Building {
     return this._sqft;
   }
 
+  // Désactivation de la règle ESLint pour cette méthode spécifique
   /* eslint-disable class-methods-use-this */
   evacuationWarningMessage() {
-    if (this.constructor === Building) {
-      throw new Error('Class extending Building must override evacuationWarningMessage');
-    }
-    /* eslint-enable class-methods-use-this */
+    throw new Error('Class extending Building must override evacuationWarningMessage');
   }
+  /* eslint-enable class-methods-use-this */
 }
+
 export default Building;
