@@ -1,4 +1,4 @@
-export default class Building {
+class Building {
   constructor(sqft) {
     this._sqft = sqft;
     if (new.target === Building) {
@@ -18,3 +18,4 @@ export default class Building {
     /* eslint-enable class-methods-use-this */
   }
 }
+export default Building;
