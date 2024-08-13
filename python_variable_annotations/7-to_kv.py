@@ -6,4 +6,5 @@ from typing import Union
 def to_kv(k: str, v: Union[int, float]) -> tuple:
     """tuple y su madre"""
     result: float = v * v
-    return (k, result)
+    total: tuple = (k, result)
+    return total
