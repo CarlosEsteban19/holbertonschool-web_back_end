@@ -2,6 +2,6 @@
 """hello there"""
 
 
-def floor(n: float) -> float:
+def floor(n: float) -> int:
     """hola"""
     return n.floor()
