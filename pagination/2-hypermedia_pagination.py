@@ -41,41 +41,22 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """2-hypermedia_pagination.py"""
-        info = {}
-        rows: int = 0
-
         data = Server.dataset(self)
-        for row in data:
-            rows += 1
+        rows = len(data)
 
-        totalPages = rows // page_size
+        totalPages = (rows + page_size - 1) // page_size
 
-        prevPage = page - 1
-        if prevPage == 0:
-            prevPage = None
-
-        nextPage = page + 1
-        if nextPage > totalPages:
-            nextPage = None
+        prevPage = page - 1 if page > 1 else None
+        nextPage = page + 1 if page < totalPages else None
 
         currentPage = Server.get_page(self, page, page_size)
-        if not currentPage:
-            page_size = 0
+        actualSize = len(currentPage)
 
-        info['page_size'] = page_size
-        info['page'] = page
-        info['data'] = currentPage
-        info['next_page'] = nextPage
-        info['prev_page'] = prevPage
-        info['total_pages'] = totalPages
-        return info
-
-
-server = Server()
-print(server.get_hyper(1, 2))
-print("---")
-print(server.get_hyper(2, 2))
-print("---")
-print(server.get_hyper(100, 3))
-print("---")
-print(server.get_hyper(3000, 100))
+        return {
+            'page_size': actualSize,
+            'page': page,
+            'data': currentPage,
+            'next_page': nextPage,
+            'prev_page': prevPage,
+            'total_pages': totalPages,
+        }
