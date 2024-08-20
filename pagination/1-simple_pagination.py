@@ -2,7 +2,6 @@
 """0-simple_helper_function.py"""
 from typing import Tuple, List
 import csv
-import math
 
 
 def index_range(page: int, page_size: int) -> Tuple:
@@ -39,10 +38,3 @@ class Server:
         limit = index_range(page, page_size)
 
         return data[limit[0]:limit[1]]
-
-
-server = Server()
-
-print(server.get_page(1, 3))
-print(server.get_page(3, 2))
-print(server.get_page(3000, 100))
