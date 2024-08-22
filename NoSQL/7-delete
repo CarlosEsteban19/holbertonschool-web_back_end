@@ -1,0 +1,2 @@
+// delete docs named holb school
+db.school.deleteMany({})
