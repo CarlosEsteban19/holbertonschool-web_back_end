@@ -1,3 +1,4 @@
-export default function displayMessage(str) {
-    console.log(str);
+function displayMessage(str) {
+  console.log(str);
 }
+module.exports = displayMessage;
