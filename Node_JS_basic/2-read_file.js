@@ -4,14 +4,14 @@ function countStudents(path) {
   try {
     const data = fs.readFileSync(path, 'utf8');
 
-    const lines = data.split('\n').filter(line => line.trim() !== '');
+    const lines = data.split('\n').filter((line) => line.trim() !== '');
 
     const studentRows = lines.slice(1);
 
     const students = {};
     let totalStudents = 0;
 
-    studentRows.forEach(row => {
+    studentRows.forEach((row) => {
       const [firstname, lastname, age, field] = row.split(',');
 
       if (firstname && lastname && age && field) {
@@ -20,7 +20,7 @@ function countStudents(path) {
         }
 
         students[field].push(firstname.trim());
-        totalStudents++;
+        totalStudents += 1;
       }
     });
 
